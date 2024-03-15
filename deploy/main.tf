@@ -83,6 +83,9 @@ resource "aws_instance" "ci-sockshop-k8s-master" {
       "sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni"
     ]
   }
+  metadata_options {
+    http_tokens = "required"
+  }
 }
 
 resource "aws_instance" "ci-sockshop-k8s-node" {
@@ -109,6 +112,13 @@ resource "aws_instance" "ci-sockshop-k8s-node" {
       "sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni",
       "sudo sysctl -w vm.max_map_count=262144"
     ]
+  }
+  metadata_options {
+    http_tokens = "required"
+  }
+  metadata_options {
+  }
+  metadata_options {
   }
 }
 
